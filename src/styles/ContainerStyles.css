@@ -1,0 +1,44 @@
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.form-main {
+    border: 1px solid #bfbfbf;
+    padding: 30px;
+    width: 30%;
+}
+
+
+
+.form-btn {
+    display: flex;
+    justify-content: end;
+    margin-top: 25px;
+}
+
+.form-btn>button {
+    width: 100px;
+}
+
+.form-btn>button:hover {
+    cursor: pointer;
+
+}
+
+.home-box {
+    margin-top: 45px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

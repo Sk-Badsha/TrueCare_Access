@@ -1,0 +1,24 @@
+.foot-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 60px;
+    background-color: #424242;
+}
+
+.copy-right-sec {
+    padding: 1.5rem;
+    background: #008080;
+    color: #fff;
+    text-align: center;
+}
+
+.copy-right-sec a {
+    color: #fcd462;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+}

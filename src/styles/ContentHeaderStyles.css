@@ -1,0 +1,35 @@
+.content-header {
+    color: rgb(7, 7, 7);
+    padding: 20px;
+    font-size: 24px;
+    background-color: #ebe5e5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+Badge>.bedge {
+    padding-right: 30px;
+}
+
+.content-header i {
+    margin-top: 7px;
+    margin-right: 10px;
+    color: rgba(28, 27, 27, 0.885);
+}
+
+.content-header a {
+    text-decoration: none;
+    color: #212121;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.content-header a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgba(20, 136, 83, 0.737);
+
+}
