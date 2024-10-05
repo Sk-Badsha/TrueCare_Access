@@ -5,7 +5,7 @@ import Register from "./Register/Register.jsx";
 import Login from "./Login/Login.jsx";
 import Footer from "./Footer/Footer.jsx";
 import Container from "./Container/Container.jsx";
-import Spinner from "./Spinner/spinner.jsx";
+import Spinner from "./Spinner/Spinner.jsx";
 import AuthInput from "./AuthInput/AuthInput.jsx";
 import Sidebar from "./Sidebar/Sidebar.jsx";
 import ContentHeader from "./ContentHeader/ContentHeader.jsx";

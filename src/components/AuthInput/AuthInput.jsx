@@ -20,11 +20,6 @@ export default function AuthInput({
   useEffect(() => {
     // Show loading spinner
     const accessToken = Cookies.get("accessToken");
-    console.log(Cookies.get("refreshToken"));
-
-    console.log("accessToken found as : ", accessToken);
-    console.log("auth status: ", authStatus);
-    console.log("authentication: ", authentication);
 
     dispatch(showLoading());
 
