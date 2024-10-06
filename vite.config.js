@@ -7,9 +7,7 @@ dotenv.config();
 export default defineConfig({
   server: {
     proxy: {
-      "/api":
-        process.env.VITE_BACKEND_ENDPOINT ||
-        import.meta.env.VITE_BACKEND_ENDPOINT,
+      "/api": " https://truecare-access-backend.onrender.com",
     },
   },
   plugins: [react()],
