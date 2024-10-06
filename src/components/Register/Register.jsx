@@ -1,14 +1,14 @@
 import React from "react";
-import { Flex, Form, Input, message } from "antd";
+import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import "../../styles/RegisterStyles.css";
 function Register() {
-  // form handler
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());
@@ -17,18 +17,18 @@ function Register() {
 
       if (res.status >= 200 && res.status < 300) {
         dispatch(hideLoading());
-        message.success(res.data.message); // Show success message if user is registered
+        message.success(res.data.message);
         navigate("/login");
       } else {
         dispatch(hideLoading());
-        message.error(res.data.message); // Show error message for 409 (user already exists)
+        message.error(res.data.message);
       }
     } catch (error) {
       dispatch(hideLoading());
       if (error.response && error.response.data.message) {
-        message.error(error.response.data.message); // Display API error message if available
+        message.error(error.response.data.message);
       } else {
-        message.error("Something went wrong!"); // Fallback error message
+        message.error("Something went wrong!");
       }
     }
   };
@@ -37,26 +37,38 @@ function Register() {
     <div className="form-container">
       <Form layout="vertical" onFinish={onfinishHandler} className="form-main">
         <h3 className="text-center">Register Now</h3>
-        <Form.Item label="Name" name="name">
-          <Input type="text" required></Input>
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[{ required: true, message: "Please input your name!" }]}
+        >
+          <Input type="text" required />
         </Form.Item>
-        <Form.Item label="Email" name="email">
-          <Input type="email" required></Input>
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: "Please input your email!" }]}
+        >
+          <Input type="email" required />
         </Form.Item>
-        <Form.Item label="Password" name="password">
-          <Input type="password" required></Input>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input type="password" required />
         </Form.Item>
-        <Flex justify="space-between" align="center">
-          <button
-            className="btn btn-primary"
-            style={{ "margin-right": " 30px" }}
-          >
+        <div className="form-footer">
+          <button className="btn btn-primary" type="submit">
             Submit
           </button>
-          <Link to="/login">Already Have an Account?</Link>
-        </Flex>
+          <Link to="/login" className="login-link">
+            Already Have an Account?
+          </Link>
+        </div>
       </Form>
     </div>
   );
 }
+
 export default Register;

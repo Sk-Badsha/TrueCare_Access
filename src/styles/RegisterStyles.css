@@ -6,6 +6,7 @@
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+
 }
 
 .form-main {
@@ -19,6 +20,7 @@
     /* Prevent the form from shrinking too much */
     box-sizing: border-box;
     /* Ensure padding doesn't affect overall width */
+
 }
 
 .text-center {
@@ -37,13 +39,20 @@
 }
 
 @media (max-width: 600px) {
+    .form-container {
+        display: inline-block;
+        width: 700px;
+        margin: auto;
+    }
+
     .form-main {
         padding: 20px;
         width: 100%;
         max-width: 95%;
-        /* Scale down with respect to screen size */
         min-width: unset;
-        /* Remove min-width restriction on smaller screens */
+
+
+
     }
 
     .form-footer {
@@ -54,7 +63,7 @@
     .form-footer button {
         margin-bottom: 10px;
         width: 100%;
-        /* Make button take full width on small screens */
+
     }
 
     .login-link {
