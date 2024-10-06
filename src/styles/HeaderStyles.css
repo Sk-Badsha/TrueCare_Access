@@ -5,6 +5,8 @@ nav {
     width: 100%;
     padding: 20px;
     transition: all 0.4s ease;
+    z-index: 1000;
+
 }
 
 nav.sticky {
@@ -67,4 +69,52 @@ nav.sticky .nav-links li a:hover {
 .header-active {
     background: none !important;
     border: none !important;
+}
+
+/* Responsive styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    height: 3px;
+    width: 25px;
+    background: #0E2431;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-content {
+        justify-content: space-between;
+
+    }
+
+    .nav-content .logo a {
+        font-size: small;
+        color: red;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        background: #008080;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+
+    }
+
+    .nav-links.active {
+        display: flex;
+
+    }
+
+    .hamburger {
+        display: flex;
+
+    }
 }

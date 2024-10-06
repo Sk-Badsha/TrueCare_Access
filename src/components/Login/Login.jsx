@@ -5,7 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import { login as authLogin } from "../../redux/features/authSlice";
-
+import "../../styles/LoginStyles.css";
 const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

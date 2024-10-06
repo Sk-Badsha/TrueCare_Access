@@ -2,63 +2,60 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../styles/HeaderStyles.css";
+
 function Header() {
   const [isSticky, setIsSticky] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Added state for the menu
   const authStatus = useSelector((state) => state.auth.status);
+
   const navItems = [
-    {
-      name: "Home",
-      slug: "",
-      active: true,
-    },
-    {
-      name: "About",
-      slug: "/about",
-      active: true,
-    },
-    {
-      name: "Register",
-      slug: "/register",
-      active: !authStatus,
-    },
-    {
-      name: "Login",
-      slug: "/login",
-      active: !authStatus,
-    },
+    { name: "Home", slug: "", active: true },
+    { name: "About", slug: "/about", active: true },
+    { name: "Register", slug: "/register", active: !authStatus },
+    { name: "Login", slug: "/login", active: !authStatus },
   ];
+
   useEffect(() => {
     const handleScroll = () => {
-      if (document.documentElement.scrollTop > 20) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+      setIsSticky(document.documentElement.scrollTop > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
-    <nav className={`${isSticky ? "sticky" : ""}`}>
-      <div class="nav-content">
-        <div class="logo">
+    <nav className="sticky">
+      <div className="nav-content">
+        <div className="logo">
           <a href="/">TrueCare Access</a>
         </div>
-        <ul class="nav-links">
+        <div
+          className={`hamburger ${isMenuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
+        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           {navItems.map((item) =>
             item.active ? (
               <li className="nav-item" key={item.slug}>
                 <NavLink
                   className={({ isActive }) =>
-                    ` nav-link ${isActive ? "active header-active" : ""}`
+                    `nav-link ${isActive ? "active header-active" : ""}`
                   }
                   aria-current="page"
                   to={item.slug}
+                  onClick={() => setIsMenuOpen(false)} // Close menu on link click
                 >
                   {item.name}
                 </NavLink>

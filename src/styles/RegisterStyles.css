@@ -1,0 +1,52 @@
+/* RegisterStyles.css */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.form-main {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.login-link {
+    color: #1890ff;
+}
+
+@media (max-width: 600px) {
+    .form-main {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-footer button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .login-link {
+        margin-top: 10px;
+    }
+}

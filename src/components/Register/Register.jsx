@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
+import "../../styles/RegisterStyles.css";
 function Register() {
   // form handler
   const navigate = useNavigate();
