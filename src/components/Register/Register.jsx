@@ -8,7 +8,7 @@ import "../../styles/RegisterStyles.css";
 function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  console.log(process.env.VITE_BACKEND_ENDPOINT);
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());
