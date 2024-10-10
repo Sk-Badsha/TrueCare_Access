@@ -5,10 +5,11 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import "../../styles/RegisterStyles.css";
+import dotenv from "dotenv";
 function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(process.env.VITE_BACKEND_ENDPOINT);
+  //   console.log(import.meta.env.VITE_BACKEND_ENDPOINT);
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());

@@ -9,11 +9,13 @@ import "../../styles/LoginStyles.css";
 const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
+  console.log(backendUrl);
 
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/api/v1/users/login", values);
+      const res = await axios.post(`${backendUrl}/api/v1/users/login`, values);
       dispatch(hideLoading());
 
       if (res.data.success) {
