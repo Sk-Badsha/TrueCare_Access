@@ -4,6 +4,7 @@ import { Container } from "../../components/index.js";
 import { message, Table } from "antd";
 import axios from "axios";
 function Users() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const data = useLoaderData();
   const columns = [
     {
@@ -54,7 +55,7 @@ function Users() {
 export default Users;
 
 export const usersLoader = async () => {
-  const res = await axios.get("/api/v1/admin/getAllUsers", {
+  const res = await axios.get(`${backendUrl}/api/v1/admin/getAllUsers`, {
     withCredentials: true,
   });
   message.success(res.data.message);

@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import dayjs from "dayjs";
 function Appointments() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const dispatch = useDispatch();
   const [appointments, setAppointments] = useState();
   const handleChangeAccount = async (record, status) => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/changeBookingStatus",
+        `${backendUrl}/api/v1/doctor/changeBookingStatus`,
         {
           appointmentId: record._id,
           status: status,
@@ -86,9 +87,12 @@ function Appointments() {
   const fetchAppointments = async () => {
     try {
       dispatch(showLoading());
-      const res = await axios.get("/api/v1/doctor/doctor-appointments", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${backendUrl}/api/v1/doctor/doctor-appointments`,
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(hideLoading());
       setAppointments(res.data.data);
     } catch (error) {

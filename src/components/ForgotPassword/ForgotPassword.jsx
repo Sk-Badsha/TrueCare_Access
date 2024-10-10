@@ -4,11 +4,15 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice.js";
 import axios from "axios";
 function ForgotPassword() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const dispatch = useDispatch();
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/api/v1/users/forgot-password", values);
+      const res = await axios.post(
+        `${backendUrl}/api/v1/users/forgot-password`,
+        values
+      );
       dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);

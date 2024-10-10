@@ -5,6 +5,7 @@ import { message } from "antd";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice.js";
 import { useDispatch } from "react-redux";
 function JobOpen() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const [companyName, setCompanyName] = useState("N/A");
   const [openingFor, setOpeningFor] = useState("N/A");
   const [whomToContactName, setWhomToContactName] = useState("N/A");
@@ -21,7 +22,7 @@ function JobOpen() {
     );
 
     dispatch(showLoading());
-    const res = await axios.post("/api/v1/temp/job-opening", {
+    const res = await axios.post(`${backendUrl}/api/v1/temp/job-opening`, {
       companyName: companyName.trim() === "" ? "N/A" : companyName,
       openingFor: openingFor.trim() === "" ? "N/A" : openingFor,
       whomToContact: {

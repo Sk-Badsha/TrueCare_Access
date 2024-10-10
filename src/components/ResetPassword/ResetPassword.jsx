@@ -5,6 +5,7 @@ import axios from "axios";
 import { message } from "antd";
 
 const ResetPassword = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const { id, token } = useParams(); // Extract id and token from the URL
   const [validToken, setValidToken] = useState(false); // Token validity state
   const [password, setPassword] = useState(""); // State to hold new password
@@ -15,7 +16,7 @@ const ResetPassword = () => {
     const verifyToken = async () => {
       try {
         const res = await axios.get(
-          `/api/v1/users/reset-password/${id}/${token}`
+          `${backendUrl}/api/v1/users/reset-password/${id}/${token}`
         );
         if (res.data.success) {
           setValidToken(true); // If the token is valid, allow the form to be shown
@@ -32,7 +33,7 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `/api/v1/users/reset-password/${id}/${token}`,
+        `${backendUrl}/api/v1/users/reset-password/${id}/${token}`,
         {
           password,
         }

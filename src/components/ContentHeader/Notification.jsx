@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function Notification() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth?.userData);
@@ -18,7 +19,7 @@ function Notification() {
       try {
         dispatch(showLoading());
         const res = await axios.post(
-          "/api/v1/users/getAllNotificationsByID",
+          `${backendUrl}/api/v1/users/getAllNotificationsByID`,
           { userId: user._id },
           { withCredentials: true }
         );
@@ -47,7 +48,7 @@ function Notification() {
       dispatch(showLoading());
       const res = await axios.post(
         // Changed to POST request
-        "/api/v1/users/get-all-notifications",
+        `${backendUrl}/api/v1/users/get-all-notifications`,
         { userId: user._id }, // Sending userId in request body
         { withCredentials: true }
       );
@@ -70,7 +71,7 @@ function Notification() {
       dispatch(showLoading());
       const res = await axios.post(
         // Changed to POST request
-        "/api/v1/users/delete-all-notifications",
+        `${backendUrl}/api/v1/users/delete-all-notifications`,
         { userId: user._id }, // Sending userId in request body
         { withCredentials: true }
       );

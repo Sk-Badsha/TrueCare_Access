@@ -15,6 +15,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    /* Ensure it doesn't grow too wide */
     min-width: 300px;
     /* Set a minimum width to prevent shrinking too much */
     box-sizing: border-box;
@@ -31,12 +32,14 @@
     margin-top: 20px;
 }
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
     .form-main {
         padding: 20px;
         width: 100%;
+        /* Full width for small screens */
         max-width: 95%;
-        /* Use percentage for better scaling on very small screens */
+        /* Use percentage for better scaling on small screens */
         min-width: unset;
         /* Remove min-width restriction on smaller screens */
     }

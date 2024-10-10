@@ -6,14 +6,19 @@ import { useState } from "react";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 function ChangePassword() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const [error, setError] = useState("");
   const user = useSelector((state) => state.auth.userData);
   const [form] = Form.useForm();
   const onfinishHandler = async (values) => {
     try {
-      const res = await axios.post("/api/v1/users/change-Password", values, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `${backendUrl}/api/v1/users/change-Password`,
+        values,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (res.data.success) {
         message.success(res.data.message);

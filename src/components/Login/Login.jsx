@@ -10,7 +10,6 @@ const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
-  console.log(backendUrl);
 
   const onFinishHandler = async (values) => {
     try {

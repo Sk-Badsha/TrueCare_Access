@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { updateUser } from "../redux/features/authSlice";
 function UpdateProfile() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const user = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function UpdateProfile() {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/users/updateProfile",
+        `${backendUrl}/api/v1/users/updateProfile`,
         { ...values },
         {
           withCredentials: true,

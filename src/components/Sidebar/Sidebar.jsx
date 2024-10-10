@@ -8,6 +8,7 @@ import { getUserMenu, getAdminMenu } from "./Data.js";
 import { message } from "antd";
 
 const Sidebar = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const user = useSelector((state) => state.auth.userData);
   const userMenu = getUserMenu(user._id);
   const adminMenu = getAdminMenu(user._id);
@@ -41,7 +42,7 @@ const Sidebar = () => {
   const handleLogout = async () => {
     try {
       localStorage.clear("persist:root");
-      await axios.post("/api/v1/users/logout");
+      await axios.post(`${backendUrl}/api/v1/users/logout`);
       dispatch(logout()); // Clear user data in Redux
       navigate("/login"); // Redirect to login page
       message.success("logout Successfully");

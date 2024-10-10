@@ -7,6 +7,7 @@ import { showLoading, hideLoading } from "../../redux/features/alertSlice.js";
 import moment from "moment";
 
 function AddDoctor() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const user = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function AddDoctor() {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/users/apply-doctor",
+        `${backendUrl}/api/v1/users/apply-doctor`,
         {
           ...values,
           userId: user._id,

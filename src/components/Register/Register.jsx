@@ -7,13 +7,17 @@ import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import "../../styles/RegisterStyles.css";
 import dotenv from "dotenv";
 function Register() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //   console.log(import.meta.env.VITE_BACKEND_ENDPOINT);
   const onfinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post("/api/v1/users/register", values);
+      const res = await axios.post(
+        `${backendUrl}/api/v1/users/register`,
+        values
+      );
       console.log(res);
 
       if (res.status >= 200 && res.status < 300) {

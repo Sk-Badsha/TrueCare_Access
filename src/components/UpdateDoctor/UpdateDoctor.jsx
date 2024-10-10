@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice.js";
 function UpdateDoctor() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const user = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function UpdateDoctor() {
   const getDoctorDetails = async () => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/getDoctorInfo",
+        `${backendUrl}/api/v1/doctor/getDoctorInfo`,
         {
           userId: params.id,
         },
@@ -47,7 +48,7 @@ function UpdateDoctor() {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/doctor/updateDoctorInfo",
+        `${backendUrl}/api/v1/doctor/updateDoctorInfo`,
         { ...values, userId: user._id },
         {
           withCredentials: true,

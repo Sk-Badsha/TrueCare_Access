@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import dayjs from "dayjs";
 function Appointments() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const dispatch = useDispatch();
   const [appointments, setAppointments] = useState();
 
@@ -42,9 +43,12 @@ function Appointments() {
   const fetchAppointments = async () => {
     try {
       dispatch(showLoading());
-      const res = await axios.get("/api/v1/users/user-appointments", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${backendUrl}/api/v1/users/user-appointments`,
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(hideLoading());
       setAppointments(res.data.data);
     } catch (error) {

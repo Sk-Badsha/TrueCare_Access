@@ -7,12 +7,13 @@ import axios from "axios";
 import DoctorList from "./DoctorList.jsx";
 
 function Dashboard() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const [doctors, setDoctors] = useState([{}]);
   const dispatch = useDispatch();
   const getAllDoctors = async () => {
     try {
       dispatch(showLoading());
-      const res = await axios.get("/api/v1/users/getAllDoctors", {
+      const res = await axios.get(`${backendUrl}/api/v1/users/getAllDoctors`, {
         withCredentials: true,
       });
 

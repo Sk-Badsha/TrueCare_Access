@@ -3,12 +3,13 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Container } from "../index.js";
 function Home() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const [user, setUser] = useState("");
   const temp = useSelector((state) => state.auth?.userData?.name);
   // logged in user data
   const getUserData = async () => {
     try {
-      const res = await axios.get("/api/v1/users/getCurrentUser", {
+      const res = await axios.get(`${backendUrl}/api/v1/users/getCurrentUser`, {
         withCredentials: true,
       });
       const userData = res.data.data;

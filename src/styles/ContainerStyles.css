@@ -1,7 +1,23 @@
+/* Ensure no overflow for the entire page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
 .container {
     max-width: 950px;
     margin: 0 auto;
     padding: 10px;
+    width: 100%;
+    /* Ensure it fits within the viewport */
 }
 
 .form-container {
@@ -9,16 +25,34 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-
+    padding: 10px;
+    /* Add some padding for mobile devices */
 }
 
 .form-main {
     border: 1px solid #bfbfbf;
     padding: 30px;
     width: 35%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    /* Ensure it doesn't grow too wide on large screens */
+    min-width: 300px;
+    /* Prevent it from being too narrow */
 }
 
-
+/* Make the form more responsive on smaller screens */
+@media (max-width: 768px) {
+    .form-main {
+        width: 100%;
+        /* Use full width on smaller screens */
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+        max-width: 100%;
+        /* No max-width restriction */
+    }
+}
 
 .form-btn {
     display: flex;
@@ -32,7 +66,6 @@
 
 .form-btn>button:hover {
     cursor: pointer;
-
 }
 
 .home-box {
@@ -41,4 +74,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Prevent horizontal overflow on smaller screens */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 0 10px;
+    }
+
+    .form-main {
+        width: 100%;
+        /* Make it take full width of the screen */
+        box-shadow: none;
+        /* Optional: Remove shadow to make it look cleaner */
+    }
 }

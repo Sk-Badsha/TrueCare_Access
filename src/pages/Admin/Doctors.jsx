@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 import axios from "axios";
 function Doctors() {
+  const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const columns = [
     {
       title: "Name",
@@ -70,7 +71,7 @@ function Doctors() {
 
   const handleChangeAccount = async (record, status) => {
     const res = await axios.post(
-      "/api/v1/admin/changeAccountStatus",
+      `${backendUrl}/api/v1/admin/changeAccountStatus`,
       {
         doctorId: record._id,
         status: status,
@@ -98,7 +99,7 @@ function Doctors() {
 export default Doctors;
 
 export const doctorsLoader = async () => {
-  const res = await axios.get("/api/v1/admin/getAllDoctors", {
+  const res = await axios.get(`${backendUrl}/api/v1/admin/getAllDoctors`, {
     withCredentials: true,
   });
   message.success(res.data.message);
