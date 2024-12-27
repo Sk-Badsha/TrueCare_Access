@@ -14,13 +14,12 @@ const App = () => {
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post(`${backendUrl}/api/v1/users/login`, values);
+      const res = await axios.post(`${backendUrl}/api/v1/users/login`, values, {
+        withCredentials: true,
+      });
       dispatch(hideLoading());
       console.log(res);
       if (res.data.success) {
-        document.cookie = `accessToken=${res.data.data.acc_token}; secure=true; httpOnly=true;`;
-        document.cookie = `refreshToken=${res.data.data.ref_token}; secure=true; httpOnly=true;`;
-
         dispatch(authLogin(res?.data?.data?.user));
         message.success(res.data.message || "Login successful!");
         navigate("/dashboard");
