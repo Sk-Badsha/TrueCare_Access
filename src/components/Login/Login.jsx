@@ -16,10 +16,13 @@ const App = () => {
       dispatch(showLoading());
       const res = await axios.post(`${backendUrl}/api/v1/users/login`, values);
       dispatch(hideLoading());
-
+      console.log(res);
       if (res.data.success) {
+        document.cookie = `accessToken=${res.data.data.acc_token}; path=/;  SameSite=Strict`;
+        document.cookie = `refreshToken=${res.data.data.ref_token}; path=/;  SameSite=Strict`;
+
+        dispatch(authLogin(res?.data?.data?.user));
         message.success(res.data.message || "Login successful!");
-        dispatch(authLogin(res.data.data.user));
         navigate("/dashboard");
       } else {
         throw new Error(res.data.message || "Login failed");

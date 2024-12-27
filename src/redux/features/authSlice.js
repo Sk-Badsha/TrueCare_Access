@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 const initialState = {
   status: false,
@@ -11,9 +10,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
+      localStorage.setItem("email", JSON.stringify(action.payload.email));
       (state.status = true), (state.userData = action.payload);
     },
     logout: (state) => {
+      localStorage.removeItem("email");
       (state.status = false), (state.userData = null);
     },
     updateUser: (state, action) => {

@@ -25,9 +25,10 @@ import Doctors, { doctorsLoader } from "./pages/Admin/Doctors.jsx";
 import JobOpen from "./pages/Temp/JobOpen.jsx";
 import Users, { usersLoader } from "./pages/Admin/Users.jsx";
 import Layout from "./Layout.jsx";
-import store, { persistor } from "./redux/store.js";
+import store from "./redux/store.js";
+// import store, { persistor } from "./redux/store.js";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+// import { PersistGate } from "redux-persist/integration/react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -211,8 +212,8 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <RouterProvider router={router} />
-    </PersistGate>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
+    <RouterProvider router={router} />
+    {/* </PersistGate> */}
   </Provider>
 );
