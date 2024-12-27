@@ -18,8 +18,8 @@ const App = () => {
       dispatch(hideLoading());
       console.log(res);
       if (res.data.success) {
-        document.cookie = `accessToken=${res.data.data.acc_token}; path=/;  SameSite=Strict`;
-        document.cookie = `refreshToken=${res.data.data.ref_token}; path=/;  SameSite=Strict`;
+        document.cookie = `accessToken=${res.data.data.acc_token}; path=/; Secure; SameSite=None`;
+        document.cookie = `refreshToken=${res.data.data.ref_token}; path=/; Secure; SameSite=None`;
 
         dispatch(authLogin(res?.data?.data?.user));
         message.success(res.data.message || "Login successful!");
