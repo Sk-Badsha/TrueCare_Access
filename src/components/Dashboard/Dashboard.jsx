@@ -35,7 +35,7 @@ function Dashboard() {
       <Row>
         {doctors &&
           doctors.map((doctor) => (
-            <DoctorList key={doctor._id} doctor={doctor} />
+            <DoctorList key={doctor.name} doctor={doctor} />
           ))}
       </Row>
     </Container>

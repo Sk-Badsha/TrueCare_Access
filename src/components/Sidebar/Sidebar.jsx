@@ -49,6 +49,7 @@ const Sidebar = () => {
         }
       );
       dispatch(logout()); // Clear user data in Redux
+      localStorage.removeItem("accessToken");
       navigate("/login"); // Redirect to login page
       message.success("logout Successfully");
     } catch (error) {

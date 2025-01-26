@@ -5,25 +5,24 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import "../../styles/RegisterStyles.css";
-import dotenv from "dotenv";
+
 function Register() {
   const backendUrl = import.meta.env.VITE_BACKEND_ENDPOINT;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //   console.log(import.meta.env.VITE_BACKEND_ENDPOINT);
-  const onfinishHandler = async (values) => {
+
+  const onFinishHandler = async (values) => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
         `${backendUrl}/api/v1/users/register`,
         values
       );
-      console.log(res);
 
       if (res.status >= 200 && res.status < 300) {
         dispatch(hideLoading());
         message.success(res.data.message);
-        navigate("/login");
+        navigate("/verifyAccount", { state: { email: values.email } });
       } else {
         dispatch(hideLoading());
         message.error(res.data.message);
@@ -39,35 +38,30 @@ function Register() {
   };
 
   return (
-    <div className="form-container">
-      <Form layout="vertical" onFinish={onfinishHandler} className="form-main">
-        <h3 className="text-center">Register Now</h3>
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[{ required: true, message: "Please input your name!" }]}
-        >
-          <Input type="text" required />
+    <div className="register-container">
+      <Form
+        layout="vertical"
+        onFinish={onFinishHandler}
+        className="register-form"
+      >
+        <h3 className="register-form-title">Register Now</h3>
+        <Form.Item label="Name" name="name" className="register-form-item">
+          <Input type="text" required className="register-input" />
         </Form.Item>
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
-        >
-          <Input type="email" required />
+        <Form.Item label="Email" name="email" className="register-form-item">
+          <Input type="email" required className="register-input" />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          className="register-form-item"
         >
-          <Input type="password" required />
+          <Input type="password" required className="register-input" />
         </Form.Item>
-        <div className="form-footer">
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
-          <Link to="/login" className="login-link">
+
+        <div className="register-footer">
+          <button className="register-btn-submit">Submit</button>
+          <Link to="/login" className="register-login-link">
             Already Have an Account?
           </Link>
         </div>

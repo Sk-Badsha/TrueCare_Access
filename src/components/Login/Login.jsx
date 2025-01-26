@@ -22,6 +22,7 @@ const App = () => {
       if (res.data.success) {
         dispatch(authLogin(res?.data?.data?.user));
         message.success(res.data.message || "Login successful!");
+        localStorage.setItem("accessToken", res?.data?.data.acc_token);
         navigate("/dashboard");
       } else {
         throw new Error(res.data.message || "Login failed");
@@ -41,35 +42,39 @@ const App = () => {
   };
 
   return (
-    <div className="form-container">
-      <Form layout="vertical" onFinish={onFinishHandler} className="form-main">
-        <h3 className="text-center">Login Now</h3>
+    <div className="login-container">
+      <Form layout="vertical" onFinish={onFinishHandler} className="login-form">
+        <h3 className="login-form-title">Login Now</h3>
         <Form.Item
           label="Email"
           name="email"
           rules={[{ required: true, message: "Please input your email!" }]}
         >
-          <Input type="email" required />
+          <Input type="email" required className="login-input" />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input type="password" required />
+          <Input type="password" required className="login-input" />
         </Form.Item>
         <Form.Item>
           <button
             style={{ width: "100%" }}
-            className="btn btn-success"
+            className="btn btn-login"
             type="submit"
           >
             Login
           </button>
         </Form.Item>
         <Flex justify="space-between" align="center">
-          <Link to="/register">Register Now!</Link>
-          <Link to="/users/forgot-password">Forgot Password?</Link>
+          <Link to="/register" className="login-register-link">
+            Register Now!
+          </Link>
+          <Link to="/users/forgot-password" className="login-forgot-password">
+            Forgot Password?
+          </Link>
         </Flex>
       </Form>
     </div>

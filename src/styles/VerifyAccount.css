@@ -1,0 +1,64 @@
+.otp-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #8cb1b113;
+    width: 610px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+    top: 100px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Floating shadow */
+    border-radius: 15px;
+    /* Optional: Rounded corners for the container */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smooth hover effect */
+}
+
+.otp-form:hover {
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 6px 15px rgba(0, 0, 0, 0.1);
+    /* Stronger shadow on hover */
+}
+
+.otp-main-form {
+    width: 700px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+
+.btn-full {
+    width: 85%;
+}
+
+.otp-input {
+    width: 85px;
+    height: 70px;
+    margin: 5px;
+    padding: 6px;
+    font-size: 30px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.otp-input:hover,
+.otp-input:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+
+}

@@ -16,6 +16,8 @@ import AddDoctor from "./AddDoctor/AddDoctor.jsx";
 import Appointments from "./Appointments/Appointments.jsx";
 import ForgotPassword from "./ForgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./ResetPassword/ResetPassword.jsx";
+import PersistLogin from "./PersistLogin/PersistLogin.jsx";
+import VerifyAccount from "./VerifyAccount/VerifyAccount.jsx";
 export {
   Header,
   Home,
@@ -35,4 +37,6 @@ export {
   Appointments,
   ForgotPassword,
   ResetPassword,
+  PersistLogin,
+  VerifyAccount,
 };

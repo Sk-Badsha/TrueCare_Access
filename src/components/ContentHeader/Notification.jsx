@@ -42,6 +42,9 @@ function Notification() {
     };
 
     fetchNotifications();
+    return () => {
+      handleMarkAllRead();
+    };
   }, [dispatch, user._id]);
   const handleMarkAllRead = async () => {
     try {
