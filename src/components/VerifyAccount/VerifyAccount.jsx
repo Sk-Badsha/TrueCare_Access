@@ -4,7 +4,7 @@ import { message } from "antd";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
-import "../../styles/verifyAccount.css";
+import "../../styles/VerifyAccount.css";
 
 function VerifyAccount() {
   const length = 6;
